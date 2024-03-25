@@ -10,11 +10,9 @@ The following section describes the API endpoints details.
 
 ### Authorization
 
-#### Description
-
 This endpoint is used to obtain an access token required for authorization to access other API endpoints.
 
-##### Endpoint
+**Endpoint**  
 
 - **Method:** POST
 - **URL:** `https://horizon-api-sb.app.rpe.tech/oauth2/token`
@@ -49,11 +47,11 @@ grant_type=password&username=rpe-sandbox&password=1Rpe@dmi4.22
 ```
 ### API portador  
 
-#### Description  
+#### GET/Portadores/{idPortador}
 
 This endpoint is used to retrieve detailed information about a specific portador.
 
-##### Endpoint  
+**Endpoint**   
 
 - **Method:** GET
 - **URL:** `{{gateway}}portadores/{idPortador}`
@@ -80,13 +78,76 @@ Authorization: Bearer [Access Token]
 }
 ```
 
-### Bloqueio/Portador
+#### GET/Portadores/{idPortador}/telefones
 
-#### Description
+This endpoint is used to retrieve telephone information for a specific portador.
+
+**Endpoint**  
+
+- **Method:** GET
+- **URL:** `{{gateway}}portadores/{idPortador}/telefones`  
+
+##### Request example
+
+```
+GET {{gateway}}portadores/2001/telefones
+Authorization: Bearer <access_token>
+```
+
+##### Response example
+
+```json
+[
+  {
+    "id": 1,
+    "tipo": "CELULAR",
+    "ramal": "4020",
+    "area": "83",
+    "telefone": "999999999"
+  }
+]
+```
+
+#### PATCH/Portadores/{idPortador}
+
+This endpoint is used to update information for a specific portador.
+
+**Endpoint**  
+
+- **Method:** PATCH
+- **URL:** `{{gateway}}portadores/2001`  
+
+##### Request example
+
+```
+PATCH {{gateway}}portadores/2001
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "nome": "João da Silva",
+  "email": "exemplo@email.com",
+  "nacionalidade": "BRASILEIRA",
+  "cidadeNatal": "SÃO PAULO",
+  "estadoNatal": "SP",
+  ...
+}
+```
+
+##### Response example
+
+```json
+{
+  "message": "Portador information updated successfully."
+}
+```
+
+
+### POST/portadores/bloqueios
 
 This endpoint is used to block specific portadores.
 
-##### Endpoint
+**Endpoint**  
 
 - **Method:** POST
 - **URL:** `{{gateway}}portadores/bloqueios`
@@ -120,6 +181,20 @@ Content-Type: application/json
   "idBloqueio": 12345,
   "mensagem": "Portador bloqueado com sucesso."
 }
+```
+
+### DELETE/portadores/{idPortador}/telefones/{idTelefone}
+
+Delete a telephone record for a specific portador.
+
+- **Method:** DELETE
+- **URL:** `{{gateway}}portadores/2001/telefones/1`
+
+#### Request example
+
+```
+DELETE {{gateway}}portadores/2001/telefones/1
+Authorization: Bearer <access_token>
 ```
 
 ### Error Handling
