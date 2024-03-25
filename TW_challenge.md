@@ -124,7 +124,7 @@ Content-Type: application/json
 
 ### Error Handling
 
-The API may return the follwing HTTP status codes for error situations:
+The API may return the following HTTP status codes for error situations:
 
 - **400 Bad Request:** Invalid request.
 - **401 Unauthorized:** Authentication failure or lack of authorization.
