@@ -143,7 +143,7 @@ Content-Type: application/json
 ```
 
 
-### POST/portadores/bloqueios
+#### POST/portadores/bloqueios
 
 This endpoint is used to block specific portadores.
 
@@ -183,7 +183,7 @@ Content-Type: application/json
 }
 ```
 
-### DELETE/portadores/{idPortador}/telefones/{idTelefone}
+#### DELETE/portadores/{idPortador}/telefones/{idTelefone}
 
 Delete a telephone record for a specific portador.
 
